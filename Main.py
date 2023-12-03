@@ -5,7 +5,7 @@ root = Tk()
 root.title("Image Viewer")
 
 my_img1 = ImageTk.PhotoImage(Image.open("images/Bez_nazwy.png"))
-my_img2 = ImageTk.PhotoImage(Image.open("images/fryc.png"))
+my_img2 = ImageTk.PhotoImage(Image.open("images/image.png"))
 my_img3 = ImageTk.PhotoImage(Image.open("images/szachy.PNG"))
 
 image_list = [my_img1, my_img2, my_img3]
