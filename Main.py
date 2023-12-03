@@ -1,18 +1,15 @@
 from tkinter import *
+from PIL import ImageTk, Image
 
 root = Tk()
+root.title("Icons, Images and Exit Buttons")
+# root.iconbitmap("C:/Users/Juliao JM/Downloads/py-white.ico")
 
-e = Entry(root, width=50, borderwidth=5)
-e.pack()
-e.insert(0, "Enter your name: ")
+button_quit = Button(root, text="Exit Program", command=root.quit)
+button_quit.pack()
 
-def myClick():
-    hello = "Hello " + e.get()
-    myLabel = Label(root, text=hello)
-    myLabel.pack()
-
-myButton = Button(root, text="Enter your name", command=myClick, fg="blue", bg="red")
-myButton.pack()
-
+my_img = ImageTk.PhotoImage(Image.open("fryc.png"))
+my_label = Label(image=my_img)
+my_label.pack()
 
 root.mainloop()
