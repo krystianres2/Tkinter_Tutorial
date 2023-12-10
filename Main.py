@@ -1,35 +1,22 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from tkinter import messagebox
 
 root = Tk()
-root.title("Words Learner")
+root.title("Message Box")
 
-# r = IntVar()
-# r.set("2")
 
-MODES = [
-    ("Pepperoni", "Pepperoni"),
-    ("Cheese", "Cheese"),
-    ("Mushroom", "Mushroom"),
-    ("Onion", "Onion"),
-]
+# showinfo, showwarning, showerror, askquestion, askokcancel, askyesno
 
-pizza = StringVar()
-pizza.set("Pepperoni")
+def popup():
+    response = messagebox.askquestion("this is my popup", "Hello World!")
+    Label(root, text=response).pack()
+    # if response == "yes":
+    #     Label(root, text="You clicked Yes!").pack()
+    # else:
+    #     Label(root, text="You clicked No!").pack()
 
-for text, mode in MODES:
-    Radiobutton(root, text=text, variable=pizza, value=mode).pack(anchor=W)
-def clicked(value):
-    myLabel = Label(root, text=value)
-    myLabel.pack()
 
-# Radiobutton(root, text="Option 1", variable=r, value=1, command=lambda: clicked(r.get())).pack()
-# Radiobutton(root, text="Option 2", variable=r, value=2, command=lambda: clicked(r.get())).pack()
-
-# myLabel = Label(root, text=pizza.get())
-# myLabel.pack()
-
-myButton = Button(root, text="Click Me!", command=lambda: clicked(pizza.get()))
-myButton.pack()
+Button(root, text="Popup", command=popup).pack()
 
 mainloop()
