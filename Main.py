@@ -3,20 +3,18 @@ from PIL import ImageTk, Image
 from tkinter import messagebox
 
 root = Tk()
-root.title("Message Box")
+root.title("New Window")
 
 
-# showinfo, showwarning, showerror, askquestion, askokcancel, askyesno
-
-def popup():
-    response = messagebox.askquestion("this is my popup", "Hello World!")
-    Label(root, text=response).pack()
-    # if response == "yes":
-    #     Label(root, text="You clicked Yes!").pack()
-    # else:
-    #     Label(root, text="You clicked No!").pack()
+def open():
+    global my_img
+    top = Toplevel()
+    top.title("Second Window")
+    my_img = ImageTk.PhotoImage(Image.open("images/Bez_nazwy.png"))
+    my_label = Label(top, image=my_img).pack()
+    btn2 = Button(top, text="Close Window", command=top.destroy).pack()
 
 
-Button(root, text="Popup", command=popup).pack()
+btn = Button(root, text="Open Second Window", command=open).pack()
 
 mainloop()
