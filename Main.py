@@ -1,20 +1,19 @@
 from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import messagebox
+from tkinter import filedialog
 
 root = Tk()
-root.title("New Window")
+root.title("Open File Dialog Box")
 
 
 def open():
-    global my_img
-    top = Toplevel()
-    top.title("Second Window")
-    my_img = ImageTk.PhotoImage(Image.open("images/Bez_nazwy.png"))
-    my_label = Label(top, image=my_img).pack()
-    btn2 = Button(top, text="Close Window", command=top.destroy).pack()
+    global my_image
+    root.filename = filedialog.askopenfilename(initialdir="/", title="Select a file", filetypes=(("png files", "*.png"), ("all files", "*.*")))
+    my_label = Label(root, text=root.filename).pack()
+    my_image = ImageTk.PhotoImage(Image.open(root.filename))
+    my_image_label = Label(image=my_image).pack()
 
-
-btn = Button(root, text="Open Second Window", command=open).pack()
+my_btn = Button(root, text="Open File", command=open).pack()
 
 mainloop()
