@@ -4,20 +4,29 @@ from tkinter import messagebox
 from tkinter import filedialog
 
 root = Tk()
-root.title("Checkboxes")
+root.title("Dropdown Menu")
 root.geometry("400x400")
 
+
 def show():
-    myLabel = Label(root, text=var.get()).pack()
+    myLabel = Label(root, text=clicked.get()).pack()
 
+options= [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+]
 
-var = StringVar()
+clicked = StringVar()
+clicked.set(options[0])
 
-c = Checkbutton(root, text="Check this box, I dare you!", variable=var, onvalue="On", offvalue="Off")
-c.deselect()
-c.pack()
-
+drop = OptionMenu(root, clicked, *options)
+drop.pack()
 
 myButton = Button(root, text="Show Selection", command=show).pack()
+
 
 mainloop()
