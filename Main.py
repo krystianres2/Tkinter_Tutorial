@@ -1,32 +1,38 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from tkinter import messagebox
-from tkinter import filedialog
+import sqlite3
+
 
 root = Tk()
-root.title("Dropdown Menu")
+root.title("Database connection")
 root.geometry("400x400")
 
 
-def show():
-    myLabel = Label(root, text=clicked.get()).pack()
+# Database
 
-options= [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-]
+# Create a database or connect to one
+conn = sqlite3.connect('address_book.db')
 
-clicked = StringVar()
-clicked.set(options[0])
+# Create cursor
+c = conn.cursor()
 
-drop = OptionMenu(root, clicked, *options)
-drop.pack()
+# Create table
+c.execute("""CREATE TABLE addresses (  
+        first_name text,
+        last_name text,
+        address text,
+        city text,
+        state text,
+        zipcode integer
+        )""")
 
-myButton = Button(root, text="Show Selection", command=show).pack()
 
+
+
+# Commit changes
+conn.commit()
+
+# Close connection
+conn.close()
 
 mainloop()
