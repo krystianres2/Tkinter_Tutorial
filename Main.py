@@ -4,16 +4,21 @@ from tkinter import messagebox
 from tkinter import filedialog
 
 root = Tk()
-root.title("Open File Dialog Box")
+root.title("Slider")
+root.geometry("400x400")
 
 
-def open():
-    global my_image
-    root.filename = filedialog.askopenfilename(initialdir="/", title="Select a file", filetypes=(("png files", "*.png"), ("all files", "*.*")))
-    my_label = Label(root, text=root.filename).pack()
-    my_image = ImageTk.PhotoImage(Image.open(root.filename))
-    my_image_label = Label(image=my_image).pack()
+vertical = Scale(root, from_=0, to=200)
+vertical.pack()
 
-my_btn = Button(root, text="Open File", command=open).pack()
+def slide():
+    my_label = Label(root, text=horizontal.get()).pack()
+    root.geometry(str(horizontal.get()) + "x" + str(vertical.get()))
+
+
+horizontal = Scale(root, from_=0, to=400, orient=HORIZONTAL)
+horizontal.pack()
+
+my_btn = Button(root, text="Click Me!", command=slide).pack()
 
 mainloop()
